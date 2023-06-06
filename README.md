@@ -1,11 +1,11 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/{APP-NAME}.svg?style=shield)](https://circleci.com/gh/giantswarm/{APP-NAME})
+[![CircleCI](https://circleci.com/gh/giantswarm/grafana-agent-app.svg?style=shield)](https://circleci.com/gh/giantswarm/grafana-agent-app)
 
 [Read me after cloning this template (GS staff only)](https://handbook.giantswarm.io/docs/dev-and-releng/app-developer-processes/adding_app_to_appcatalog/)
 
-# {APP-NAME} chart
+# Grafana Agent chart
 
-Giant Swarm offers a {APP-NAME} App which can be installed in workload clusters.
-Here we define the {APP-NAME} chart with its templates and default configuration.
+Giant Swarm offers a Grafana Agent App which can be installed in workload clusters.
+Here we define the Grafana Agent chart with its templates and default configuration.
 
 **What is this app?**
 
@@ -67,4 +67,4 @@ Not following these limitations will most likely result in a broken deployment.
 
 ## Credit
 
-- {APP HELM REPOSITORY}
+- https://github.com/grafana/agent/tree/main/operations/helm/charts/grafana-agent
