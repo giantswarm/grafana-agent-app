@@ -1,0 +1,18 @@
+apiVersion: v2
+appVersion: "v0.33.2"
+name: grafana-agent
+description: Giant Swarm's Grafana Agent Deployment
+icon: https://s.giantswarm.io/app-icons/grafana/1/light.svg
+version: 0.1.0
+sources:
+  - "https://github.com/grafana/agent/tree/main/operations/helm/charts/grafana-agent"
+home: https://github.com/giantswarm/grafana-agent-app
+maintainers:
+  - name: giantswarm/team-atlas
+    email: team-atlas@giantswarm.io
+annotations:
+  application.giantswarm.io/team: atlas
+dependencies:
+  - name: grafana-agent
+    version: 0.14.0
+    repository: https://grafana.github.io/helm-charts

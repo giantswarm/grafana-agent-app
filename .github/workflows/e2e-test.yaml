@@ -1,0 +1,30 @@
+name: 'e2e-test: install chart on kind'
+on: pull_request
+
+jobs:
+  test-install:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.7.0  
+
+      - name: install chart
+        run: |
+          helm dependency update ./helm/grafana-agent/
+      
+          helm --kube-context kind-chart-testing install e2e-test-grafana-agent ./helm/grafana-agent/ --wait
+
+          kubectl --context kind-chart-testing wait pod --for=condition=Ready -l app.kubernetes.io/name=grafana-agent
+
+          sleep 120
+
+          STATE=$(kubectl --context kind-chart-testing get pods -l app.kubernetes.io/name=grafana-agent -ojson | jq -r '.items | .[0].status.phase')
+          if [ "$STATE" == "Running" ]; then
+              echo 'grafana agent is Running'
+          else
+              echo 'Error grafana agent is not Running' >&2
+              exit 1
+          fi
