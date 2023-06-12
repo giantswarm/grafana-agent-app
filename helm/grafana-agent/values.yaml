@@ -1,2 +1,10 @@
 global:
   imageRegistry: docker.io
+
+grafana-agent:
+  image:
+    # -- Grafana Agent image repository.
+    repository: docker.io/giantswarm/grafana-agent
+
+serviceMonitor:
+  enabled: true
