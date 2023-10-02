@@ -17,3 +17,16 @@ workflows:
             # Trigger the job also on git tag.
             tags:
               only: /^v.*/
+
+      - architect/push-to-app-catalog:
+          context: "architect"
+          executor: "app-build-suite"
+          name: push-to-app-catalog
+          app_catalog: "giantswarm-catalog"
+          app_catalog_test: "giantswarm-test-catalog"
+          chart: "grafana-agent"
+          ct_config: ".circleci/ct-config.yaml"
+          # Trigger job on git tag.
+          filters:
+            tags:
+              only: /^v.*/

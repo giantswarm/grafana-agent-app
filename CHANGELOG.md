@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgrade upstream chart to 0.25.0 and agent to 0.36.2.
+- Add kyverno policy exception.
+
 ## [0.1.0] - 2023-06-12
 
 - Initial version
