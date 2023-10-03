@@ -1,10 +1,19 @@
 global:
-  imageRegistry: docker.io
+  image:
+    registry: docker.io
+
+# Enable Kyverno PolicyException
+kyvernoPolicyExceptions:
+  enabled: true
+  namespace: giantswarm
 
 grafana-agent:
   image:
     # -- Grafana Agent image repository.
-    repository: docker.io/giantswarm/grafana-agent
+    repository: giantswarm/grafana-agent
+  configReloader:
+    image:
+      repository: giantswarm/configmap-reload
 
-serviceMonitor:
-  enabled: true
+  serviceMonitor:
+    enabled: true

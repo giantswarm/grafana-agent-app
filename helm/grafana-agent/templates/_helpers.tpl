@@ -15,7 +15,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | default "atlas" | quote }}
 giantswarm.io/managed-by: {{ .Release.Name | quote }}
-giantswarm.io/service-type: {{ .Values.serviceType }}
+giantswarm.io/service-type: managed
 {{- end }}
 
 {{/*
