@@ -7,11 +7,11 @@ kyvernoPolicyExceptions:
   enabled: true
   namespace: giantswarm
 
-grafana-agent:
-  agent:
-    loggingSecret:
-      enabled: false
+# Block to manage a secret with logging credentials in order to push data to loki
+loggingSecret:
+  enabled: false
 
+grafana-agent:
   image:
     # -- Grafana Agent image repository.
     repository: giantswarm/grafana-agent
