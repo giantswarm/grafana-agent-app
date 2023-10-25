@@ -8,6 +8,10 @@ kyvernoPolicyExceptions:
   namespace: giantswarm
 
 grafana-agent:
+  agent:
+    loggingSecret:
+      enabled: false
+
   image:
     # -- Grafana Agent image repository.
     repository: giantswarm/grafana-agent

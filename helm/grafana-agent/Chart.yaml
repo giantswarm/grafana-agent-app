@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: "v0.36.2"
+appVersion: "v0.37.0"
 name: grafana-agent
 description: Giant Swarm's Grafana Agent Deployment
 icon: https://s.giantswarm.io/app-icons/grafana/1/light.svg
