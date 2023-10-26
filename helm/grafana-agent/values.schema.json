@@ -5,14 +5,32 @@
         "global": {
             "type": "object",
             "properties": {
-                "imageRegistry": {
-                    "type": "string"
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "registry": {
+                            "type": "string"
+                        }
+                    }
                 }
             }
         },
         "grafana-agent": {
             "type": "object",
             "properties": {
+                "configReloader": {
+                    "type": "object",
+                    "properties": {
+                        "image": {
+                            "type": "object",
+                            "properties": {
+                                "repository": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
                 "image": {
                     "type": "object",
                     "properties": {
@@ -20,14 +38,48 @@
                             "type": "string"
                         }
                     }
+                },
+                "serviceMonitor": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
                 }
             }
         },
-        "serviceMonitor": {
+        "kyvernoPolicyExceptions": {
             "type": "object",
             "properties": {
                 "enabled": {
                     "type": "boolean"
+                },
+                "namespace": {
+                    "type": "string"
+                }
+            }
+        },
+        "loggingSecret": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "secretName": {
+                    "type": "string"
+                },
+                "tenantId": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         }
