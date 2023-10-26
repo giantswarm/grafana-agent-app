@@ -7,7 +7,7 @@ kyvernoPolicyExceptions:
   enabled: true
   namespace: giantswarm
 
-# Block to manage a secret with logging credentials in order to push data to loki
+# Block to manage a secret with logging credentials in order to push data to logging system
 loggingSecret:
   enabled: false
 
