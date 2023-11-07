@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add grafana-agent-secret in the chart to store logging write credentials.
+- Add grafana-agent extra secret in the chart to store logging write credentials.
+- Add CiliumNetworkPolicy to be able to communicate from WC to MC.
 
 ### Changed
 

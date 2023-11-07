@@ -2,20 +2,24 @@ global:
   image:
     registry: docker.io
 
+ciliumNetworkPolicy:
+  enabled: true
+
 # Enable Kyverno PolicyException
 kyvernoPolicyExceptions:
   enabled: true
   namespace: giantswarm
 
-# Block to manage a secret with logging credentials in order to push data to logging system
-loggingSecret:
-  enabled: false
-  ## Those values are set by the logging-operator because there are related to the cluster
-  # secretName: <secret name where are stored those credentials>
-  # url: <Loki url where to send data>
-  # tenantId: <Tenant ID>
-  # username: <user with write access>
-  # password: <user password>
+## ExtraSecret can be used to store various data in an extra secret
+## For instance, we can use it to store logging credentials in order to push data to a logging system:
+## data:
+##   url: <logging url where to send data>
+##   username: <user with write access>
+##   password: <user password>
+extraSecret:
+  # name: <secret name where are stored those credentials>
+  annotations: {}
+  data: {}
 
 grafana-agent:
   image:
