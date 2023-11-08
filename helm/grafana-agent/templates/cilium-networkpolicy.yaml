@@ -1,0 +1,36 @@
+{{- if eq .Values.networkPolicy.flavor "cilium" -}}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "grafana-agent.labels" . | nindent 4 }}
+spec:
+  endpointSelector:
+    matchLabels:
+      {{- include "grafana-agent.selectorLabels" . | nindent 6 }}
+  ingress:
+    - toPorts:
+      - ports:
+        - port: "3101"
+          protocol: TCP
+  egress:
+    - toEntities:
+        - kube-apiserver
+        - world
+    - toEndpoints:
+      - matchLabels:
+          k8s-app: coredns
+      - matchLabels:
+          k8s-app: k8s-dns-node-cache
+      toPorts:
+      - ports:
+        - port: "53"
+          protocol: ANY
+        - port: "1053"
+          protocol: ANY
+        rules:
+          dns:
+          - matchPattern: '*'
+{{- end }}
