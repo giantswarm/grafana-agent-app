@@ -24,7 +24,7 @@ spec:
         args:
         - "patch"
         - "clusterrole"
-        - "pyroscope-agent"
+        - "{{ include "grafana-agent.fullname" . }}"
         - "--type=json"
         - '-p=[{"op": "add", "path": "/rules/0", "value":{ "apiGroups": ["extensions"], "resourceNames": ["pyroscope-agent"], "resources": ["podsecuritypolicies"], "verbs": ["use"]}}]'
 {{- end }}
