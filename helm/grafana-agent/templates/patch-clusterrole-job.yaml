@@ -7,7 +7,6 @@ metadata:
   labels:
     {{- include "grafana-agent.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": post-install,post-upgrade
     # "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
@@ -15,7 +14,7 @@ spec:
       labels:
         {{- include "grafana-agent.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ .Release.Name}}-agent-patch
+      serviceAccountName: {{ include "grafana-agent.serviceAccountName" . }}
       restartPolicy: OnFailure      
       containers:
       - name: {{ .Release.Name}}-agent-patch
