@@ -27,6 +27,20 @@ spec:
     ruleNames:
     - check-seccomp-strict
     - autogen-check-seccomp-strict
+  {{- if (index .Values "grafana-agent").agent.securityContext.privileged }}
+  - policyName: require-run-as-non-root-user
+    ruleNames:
+    - run-as-non-root-user
+    - autogen-run-as-non-root-user
+  - policyName: disallow-privileged-containers
+    ruleNames:
+    - privileged-containers
+    - autogen-privileged-containers
+  - policyName: disallow-host-namespaces
+    ruleNames:
+    - host-namespaces
+    - autogen-host-namespaces
+  {{- end }}
   match:
     any:
     - resources:
