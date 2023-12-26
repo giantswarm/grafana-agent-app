@@ -1,0 +1,30 @@
+{{- if and .Values.vintageCluster.is (index .Values "grafana-agent").agent.securityContext.privileged }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name}}-agent-patch
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "grafana-agent.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    # "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      labels:
+        {{- include "grafana-agent.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ .Release.Name}}-agent-patch
+      restartPolicy: OnFailure      
+      containers:
+      - name: {{ .Release.Name}}-agent-patch
+        image: "{{ .Values.global.image.registry }}/{{ .Values.vintageCluster.patchJob.image.name }}:{{ .Values.vintageCluster.patchJob.image.tag }}"
+        imagePullPolicy: {{ .Values.vintageCluster.patchJob.image.pullPolicy }}
+        args:
+        - "patch"
+        - "clusterrole"
+        - "pyroscope-agent"
+        - "--type=json"
+        - '-p=[{"op": "add", "path": "/rules/0", "value":{ "apiGroups": ["extensions"], "resourceNames": ["pyroscope-agent"], "resources": ["podsecuritypolicies"], "verbs": ["use"]}}]'
+{{- end }}

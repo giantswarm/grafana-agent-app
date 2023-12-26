@@ -10,6 +10,14 @@ kyvernoPolicyExceptions:
 networkPolicy:
   flavor: cilium
 
+vintageCluster:
+  is: false
+  patchJob:
+    image:
+      name: giantswarm/kubectl
+      tag: 1.28.4
+      pullPolicy: IfNotPresent
+
 ## ExtraSecret can be used to store various data in an extra secret
 ## For instance, we can use it to store logging credentials in order to push data to a logging system:
 ## data:
@@ -23,7 +31,6 @@ extraSecret:
 
 grafana-agent:
   image:
-    # -- Grafana Agent image repository.
     repository: giantswarm/grafana-agent
   configReloader:
     image:
@@ -31,3 +38,7 @@ grafana-agent:
 
   serviceMonitor:
     enabled: true
+
+  agent:
+    securityContext:
+      privileged: false
