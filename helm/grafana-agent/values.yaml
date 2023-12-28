@@ -29,6 +29,9 @@ extraSecret:
   annotations: {}
   data: {}
 
+serviceAccount:
+  create: true
+
 grafana-agent:
   image:
     repository: giantswarm/grafana-agent

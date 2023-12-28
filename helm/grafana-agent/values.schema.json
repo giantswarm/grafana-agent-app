@@ -92,6 +92,14 @@
                 }
             }
         },
+        "serviceAccount": {
+            "type": "object",
+            "properties": {
+                "create": {
+                    "type": "boolean"
+                }
+            }
+        },
         "vintageCluster": {
             "type": "object",
             "properties": {
