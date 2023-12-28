@@ -15,14 +15,6 @@ rules:
       - list
       - watch
       - patch
-  - apiGroups:
-      - "extensions"
-    resourceNames:
-      - pyroscope-agent
-    resources:
-      - podsecuritypolicies
-    verbs:
-      - use
 ---
 apiVersion: v1
 kind: ServiceAccount
