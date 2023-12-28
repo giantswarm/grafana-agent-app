@@ -10,6 +10,9 @@ kyvernoPolicyExceptions:
 networkPolicy:
   flavor: cilium
 
+serviceAccount:
+  create: true
+
 vintageCluster:
   is: false
   patchJob:
@@ -42,3 +45,6 @@ grafana-agent:
   agent:
     securityContext:
       privileged: false
+
+  serviceAccount:
+    create: true
