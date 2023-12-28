@@ -10,9 +10,6 @@ kyvernoPolicyExceptions:
 networkPolicy:
   flavor: cilium
 
-serviceAccount:
-  create: true
-
 vintageCluster:
   is: false
   patchJob:
