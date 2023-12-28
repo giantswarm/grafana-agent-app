@@ -6,6 +6,10 @@ metadata:
   labels:
     {{- include "grafana-agent.labels" . | nindent 4 }}
 rules:
+  - nonResourceURLs: 
+      - "/metrics"
+    verbs:
+      - get
   - apiGroups:
       - "rbac.authorization.k8s.io"
     resources:
@@ -15,6 +19,44 @@ rules:
       - list
       - watch
       - patch
+  - apiGroups:
+      - "extensions"
+    resourceNames:
+      - pyroscope-agent
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - use
+  - apiGroups:
+      - ""
+      - "discovery.k8s.io"
+      - "monitoring.coreos.com"
+      - "monitoring.grafana.com"
+      - "networking.k8s.io"
+    resources:
+      - configmaps
+      - endpoints
+      - endpointslices
+      - events
+      - ingresses
+      - namespaces
+      - nodes
+      - nodes/metrics
+      - nodes/proxy
+      - pods
+      - pods/log
+      - secrets
+      - services
+      - podmonitors
+      - probes
+      - prometheusrules
+      - servicemonitors
+      - podlogs
+    verbs:
+      - get
+      - list
+      - watch
+---
 ---
 apiVersion: v1
 kind: ServiceAccount

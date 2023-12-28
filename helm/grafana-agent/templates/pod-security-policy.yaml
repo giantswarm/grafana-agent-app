@@ -9,11 +9,14 @@ metadata:
     {{- include "grafana-agent.labels" . | nindent 4 }}
   name: pyroscope-agent
 spec:
+  hostPID: true
   fsGroup:
     rule: RunAsAny
   privileged: true
   readOnlyRootFilesystem: false
   runAsUser:
+    rule: RunAsAny
+  runAsGroup:
     rule: RunAsAny
   seLinux:
     rule: RunAsAny
