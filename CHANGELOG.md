@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add vintage clusters specific resources in helm chart.
+- Add vintage clusters specific resources in helm chart when running with elevated permissions.
 
 ## [0.3.1] - 2023-12-20
 
