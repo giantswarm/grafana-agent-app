@@ -2,6 +2,17 @@
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
     "properties": {
+        "extraSecret": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        },
         "global": {
             "type": "object",
             "properties": {
@@ -18,6 +29,19 @@
         "grafana-agent": {
             "type": "object",
             "properties": {
+                "agent": {
+                    "type": "object",
+                    "properties": {
+                        "securityContext": {
+                            "type": "object",
+                            "properties": {
+                                "privileged": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
                 "configReloader": {
                     "type": "object",
                     "properties": {
@@ -60,26 +84,38 @@
                 }
             }
         },
-        "loggingSecret": {
+        "networkPolicy": {
             "type": "object",
             "properties": {
-                "enabled": {
+                "flavor": {
+                    "type": "string"
+                }
+            }
+        },
+        "vintageCluster": {
+            "type": "object",
+            "properties": {
+                "is": {
                     "type": "boolean"
                 },
-                "password": {
-                    "type": "string"
-                },
-                "secretName": {
-                    "type": "string"
-                },
-                "tenantId": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
+                "patchJob": {
+                    "type": "object",
+                    "properties": {
+                        "image": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "pullPolicy": {
+                                    "type": "string"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

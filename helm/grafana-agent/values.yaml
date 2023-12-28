@@ -42,6 +42,3 @@ grafana-agent:
   agent:
     securityContext:
       privileged: false
-
-  serviceAccount:
-    create: true
