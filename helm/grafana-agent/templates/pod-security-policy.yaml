@@ -1,4 +1,4 @@
-{{- if and .Values.vintageCluster.is (index .Values "grafana-agent").agent.securityContext.privileged }}
+{{- if and .Values.psp.enabled (index .Values "grafana-agent").agent.securityContext.privileged }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:

@@ -10,13 +10,8 @@ kyvernoPolicyExceptions:
 networkPolicy:
   flavor: cilium
 
-vintageCluster:
-  is: false
-  patchJob:
-    image:
-      name: giantswarm/kubectl
-      tag: 1.28.4
-      pullPolicy: IfNotPresent
+psp:
+  enabled: false
 
 ## ExtraSecret can be used to store various data in an extra secret
 ## For instance, we can use it to store logging credentials in order to push data to a logging system:
