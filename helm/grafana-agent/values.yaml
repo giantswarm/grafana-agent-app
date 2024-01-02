@@ -31,3 +31,6 @@ grafana-agent:
 
   serviceMonitor:
     enabled: true
+
+  agent:
+    listenPort: 8080

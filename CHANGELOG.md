@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Update `listen-port` to 8080 to avoid connection issues as pods are running with non-root user.
+
 ## [0.3.1] - 2023-12-20
 
 ### Changed
