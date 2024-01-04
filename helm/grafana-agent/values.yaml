@@ -40,3 +40,4 @@ grafana-agent:
   agent:
     securityContext:
       privileged: false
+    listenPort: 8080

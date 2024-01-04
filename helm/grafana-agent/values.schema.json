@@ -32,6 +32,9 @@
                 "agent": {
                     "type": "object",
                     "properties": {
+                        "listenPort": {
+                            "type": "integer"
+                        },
                         "securityContext": {
                             "type": "object",
                             "properties": {
