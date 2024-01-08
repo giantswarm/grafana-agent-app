@@ -10,6 +10,9 @@ kyvernoPolicyExceptions:
 networkPolicy:
   flavor: cilium
 
+psp:
+  enabled: false
+
 ## ExtraSecret can be used to store various data in an extra secret
 ## For instance, we can use it to store logging credentials in order to push data to a logging system:
 ## data:
@@ -21,9 +24,11 @@ extraSecret:
   annotations: {}
   data: {}
 
+serviceAccount:
+  create: true
+
 grafana-agent:
   image:
-    # -- Grafana Agent image repository.
     repository: giantswarm/grafana-agent
   configReloader:
     image:
@@ -33,4 +38,6 @@ grafana-agent:
     enabled: true
 
   agent:
+    securityContext:
+      privileged: false
     listenPort: 8080
