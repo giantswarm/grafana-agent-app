@@ -57,6 +57,9 @@ grafana-agent:
         // ```
         //
         // will scrape the `memory`, `cpu` and `goroutine` profiles from the `8080` port of the pod.
+        // Note that if the pod's profiles are exposed on a port named `http2` or ending with the `-metrics` or `-profile` suffix, 
+        // there is no need to specify the port in the annotation. 
+        // See https://grafana.com/docs/pyroscope/latest/deploy-kubernetes/helm/#optional-scrape-your-own-workloads-profiles
         //
         // For more information see https://grafana.com/docs/phlare/latest/operators-guide/deploy-kubernetes/#optional-scrape-your-own-workloads-profiles
         discovery.relabel "kubernetes_pods" {
