@@ -13,7 +13,7 @@ spec:
   ingress:
     - toPorts:
       - ports:
-        - port: "3101"
+        - port: "8080"
           protocol: TCP
   egress:
     - toEntities:
