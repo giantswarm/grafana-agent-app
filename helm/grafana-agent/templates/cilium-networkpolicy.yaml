@@ -13,7 +13,6 @@ spec:
   ingress:
     - toPorts:
       - ports:
-          protocol: TCP
         - port: "8080"
           protocol: TCP
   egress:
