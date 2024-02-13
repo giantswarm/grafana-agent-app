@@ -3,7 +3,7 @@ appVersion: "v0.37.0"
 name: grafana-agent
 description: Giant Swarm's Grafana Agent Deployment
 icon: https://s.giantswarm.io/app-icons/grafana/1/light.svg
-version: 0.4.0
+version: 0.4.1
 sources:
   - "https://github.com/grafana/agent/tree/main/operations/helm/charts/grafana-agent"
 home: https://github.com/giantswarm/grafana-agent-app
