@@ -28,6 +28,9 @@ serviceAccount:
   create: true
 
 grafana-agent:
+  # You can make the whole chart ineffective by setting this one to "false"
+  enabled: true
+
   image:
     repository: giantswarm/grafana-agent
   configReloader:
