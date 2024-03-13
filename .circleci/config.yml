@@ -31,6 +31,19 @@ workflows:
             tags:
               only: /^v.*/
 
+      - architect/push-to-app-catalog:
+          context: architect
+          executor: "app-build-suite"
+          name: push-mimir-grafana-agent-to-control-plane-app-catalog
+          app_catalog: "control-plane-catalog"
+          app_catalog_test: "control-plane-test-catalog"
+          chart: "mimir-grafana-agent"
+          ct_config: ".circleci/ct-config.yaml"
+          filters:
+            # Trigger the job also on git tag.
+            tags:
+              only: /^v.*/
+
       - architect/push-to-app-collection:
           context: "architect"
           name: capa-app-collection
@@ -38,7 +51,7 @@ workflows:
           app_namespace: "mimir"
           app_collection_repo: "capa-app-collection"
           requires:
-            - "push-to-control-plane-app-catalog"
+            - "push-mimir-grafana-agent-to-control-plane-app-catalog"
           filters:
             branches:
               ignore: /.*/
@@ -52,7 +65,7 @@ workflows:
           app_namespace: "mimir"
           app_collection_repo: "capz-app-collection"
           requires:
-            - "push-to-control-plane-app-catalog"
+            - "push-mimir-grafana-agent-to-control-plane-app-catalog"
           filters:
             branches:
               ignore: /.*/
@@ -66,7 +79,7 @@ workflows:
           app_namespace: "mimir"
           app_collection_repo: "cloud-director-app-collection"
           requires:
-            - "push-to-control-plane-app-catalog"
+            - "push-mimir-grafana-agent-to-control-plane-app-catalog"
           filters:
             branches:
               ignore: /.*/
@@ -80,7 +93,7 @@ workflows:
           app_namespace: "mimir"
           app_collection_repo: "vsphere-app-collection"
           requires:
-            - "push-to-control-plane-app-catalog"
+            - "push-mimir-grafana-agent-to-control-plane-app-catalog"
           filters:
             branches:
               ignore: /.*/
