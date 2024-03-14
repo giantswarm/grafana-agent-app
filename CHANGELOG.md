@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove Circleci jobs to push `mimir-grafana-agent` to CAPI collections (App platform does not support it).
+
 ## [0.4.2] - 2024-03-13
 
 ### Added
