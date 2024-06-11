@@ -93,14 +93,19 @@
         "networkPolicy": {
             "type": "object",
             "properties": {
-                "egress": {
-                    "type": "array"
+                "cilium": {
+                    "type": "object",
+                    "properties": {
+                        "egress": {
+                            "type": "array"
+                        },
+                        "ingress": {
+                            "type": "array"
+                        }
+                    }
                 },
                 "flavor": {
                     "type": "string"
-                },
-                "ingress": {
-                    "type": "array"
                 }
             }
         },
