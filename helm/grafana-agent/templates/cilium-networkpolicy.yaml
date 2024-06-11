@@ -8,41 +8,37 @@ metadata:
     {{- include "grafana-agent.labels" . | nindent 4 }}
 spec:
   egress:
+  {{- if .Values.networkPolicy.egress }}
+  {{- toYaml .Values.networkPolicy.egress | nindent 2 }}
+  {{- else }}
   - toEntities:
     - kube-apiserver
     - world
   - toEndpoints:
     - matchLabels:
-        io.kubernetes.pod.namespace: kube-system
-        k8s-app: coredns
+      k8s-app: coredns
     - matchLabels:
-        io.kubernetes.pod.namespace: kube-system
-        k8s-app: k8s-dns-node-cache
+      k8s-app: k8s-dns-node-cache
     toPorts:
     - ports:
-      - port: "1053"
-        protocol: UDP
-      - port: "1053"
-        protocol: TCP
       - port: "53"
-        protocol: UDP
-      - port: "53"
-        protocol: TCP
-  - toEndpoints:
-    - matchLabels:
-        app.kubernetes.io/component: ruler
-        app.kubernetes.io/name: mimir
-        io.kubernetes.pod.namespace: mimir
-    toPorts:
-    - ports:
-      - port: "8080"
-        protocol: TCP
+        protocol: ANY
+      - port: "1053"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: '*'
+  {{- end }}
   endpointSelector:
     matchLabels:
       {{- include "grafana-agent.selectorLabels" . | nindent 6 }}
   ingress:
+  {{- if .Values.networkPolicy.ingress }}
+  {{- toYaml .Values.networkPolicy.ingress | nindent 2 }}
+  {{- else }}
   - toPorts:
     - ports:
       - port: "8080"
         protocol: TCP
+  {{- end }}
 {{- end }}

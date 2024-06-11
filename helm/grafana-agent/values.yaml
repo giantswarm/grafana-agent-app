@@ -9,6 +9,9 @@ kyvernoPolicyExceptions:
 
 networkPolicy:
   flavor: cilium
+  # You can override CNP egress/ingress rules
+  egress: []
+  ingress: []
 
 psp:
   enabled: false

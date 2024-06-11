@@ -58,6 +58,9 @@
                         }
                     }
                 },
+                "enabled": {
+                    "type": "boolean"
+                },
                 "image": {
                     "type": "object",
                     "properties": {
@@ -90,8 +93,14 @@
         "networkPolicy": {
             "type": "object",
             "properties": {
+                "egress": {
+                    "type": "array"
+                },
                 "flavor": {
                     "type": "string"
+                },
+                "ingress": {
+                    "type": "array"
                 }
             }
         },

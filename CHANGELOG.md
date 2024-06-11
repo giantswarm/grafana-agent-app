@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Restrict CiliumNetworkPolicy.
+- Enable CNP egress/ingress override.
 
 ## [0.4.3] - 2024-03-14
 
