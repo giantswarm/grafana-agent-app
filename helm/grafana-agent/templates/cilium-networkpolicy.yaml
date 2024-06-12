@@ -7,30 +7,38 @@ metadata:
   labels:
     {{- include "grafana-agent.labels" . | nindent 4 }}
 spec:
+  egress:
+  {{- if .Values.networkPolicy.cilium.egress }}
+  {{- toYaml .Values.networkPolicy.cilium.egress | nindent 2 }}
+  {{- else }}
+  - toEntities:
+    - kube-apiserver
+    - world
+  - toEndpoints:
+    - matchLabels:
+      k8s-app: coredns
+    - matchLabels:
+      k8s-app: k8s-dns-node-cache
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: ANY
+      - port: "1053"
+        protocol: ANY
+      rules:
+        dns:
+        - matchPattern: '*'
+  {{- end }}
   endpointSelector:
     matchLabels:
       {{- include "grafana-agent.selectorLabels" . | nindent 6 }}
   ingress:
-    - toPorts:
-      - ports:
-        - port: "8080"
-          protocol: TCP
-  egress:
-    - toEntities:
-        - kube-apiserver
-        - world
-    - toEndpoints:
-      - matchLabels:
-          k8s-app: coredns
-      - matchLabels:
-          k8s-app: k8s-dns-node-cache
-      toPorts:
-      - ports:
-        - port: "53"
-          protocol: ANY
-        - port: "1053"
-          protocol: ANY
-        rules:
-          dns:
-          - matchPattern: '*'
+  {{- if .Values.networkPolicy.cilium.ingress }}
+  {{- toYaml .Values.networkPolicy.cilium.ingress | nindent 2 }}
+  {{- else }}
+  - toPorts:
+    - ports:
+      - port: "8080"
+        protocol: TCP
+  {{- end }}
 {{- end }}

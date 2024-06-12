@@ -58,6 +58,9 @@
                         }
                     }
                 },
+                "enabled": {
+                    "type": "boolean"
+                },
                 "image": {
                     "type": "object",
                     "properties": {
@@ -90,6 +93,17 @@
         "networkPolicy": {
             "type": "object",
             "properties": {
+                "cilium": {
+                    "type": "object",
+                    "properties": {
+                        "egress": {
+                            "type": "array"
+                        },
+                        "ingress": {
+                            "type": "array"
+                        }
+                    }
+                },
                 "flavor": {
                     "type": "string"
                 }
