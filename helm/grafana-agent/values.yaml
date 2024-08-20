@@ -45,6 +45,8 @@ grafana-agent:
     enabled: true
 
   agent:
+    extraArgs:
+    - --disable-reporting
     securityContext:
       privileged: false
     listenPort: 8080

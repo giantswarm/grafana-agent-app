@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Disable Grafana data collection.
+
 ## [0.4.5] - 2024-07-24
 
 ### Fixed
