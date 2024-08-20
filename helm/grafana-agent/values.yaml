@@ -1,6 +1,13 @@
 global:
   image:
     registry: gsoci.azurecr.io
+  podSecurityContext:
+    fsGroup: 473
+    runAsGroup: 473
+    runAsNonRoot: true
+    runAsUser: 473
+    seccompProfile:
+      type: RuntimeDefault
 
 # Enable Kyverno PolicyException
 kyvernoPolicyExceptions:
@@ -48,5 +55,10 @@ grafana-agent:
     extraArgs:
     - --disable-reporting
     securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
       privileged: false
+      readOnlyRootFilesystem: true
     listenPort: 8080
