@@ -1,6 +1,13 @@
 global:
   image:
     registry: gsoci.azurecr.io
+  podSecurityContext:
+    fsGroup: 473
+    runAsGroup: 473
+    runAsNonRoot: true
+    runAsUser: 473
+    seccompProfile:
+      type: RuntimeDefault
 
 # Enable Kyverno PolicyException
 kyvernoPolicyExceptions:
@@ -47,6 +54,24 @@ grafana-agent:
   agent:
     extraArgs:
     - --disable-reporting
+    mounts:
+      # -- Extra volume mounts to add into the Grafana Agent container.
+      extra:
+        # This is needed to allow alloy to create files when using readOnlyRootFilesystem
+        - name: agent-tmp
+          mountPath: /tmp/agent
     securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
       privileged: false
+      readOnlyRootFilesystem: true
     listenPort: 8080
+
+  controller:
+    volumes:
+      # -- Extra volumes to add to the Grafana Agent pod.
+      extra:
+      - name: agent-tmp
+        emptyDir: {}

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Configure Agent security context to use a non root user.
+
 ## [0.4.6] - 2024-08-20
 
 ### Changed
