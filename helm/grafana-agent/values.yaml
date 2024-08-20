@@ -54,6 +54,12 @@ grafana-agent:
   agent:
     extraArgs:
     - --disable-reporting
+    mounts:
+      # -- Extra volume mounts to add into the Grafana Agent container.
+      extra:
+        # This is needed to allow alloy to create files when using readOnlyRootFilesystem
+        - name: agent-tmp
+          mountPath: /tmp/agent
     securityContext:
       allowPrivilegeEscalation: false
       capabilities:
@@ -62,3 +68,10 @@ grafana-agent:
       privileged: false
       readOnlyRootFilesystem: true
     listenPort: 8080
+
+  controller:
+    volumes:
+      # -- Extra volumes to add to the Grafana Agent pod.
+      extra:
+      - name: agent-tmp
+        emptyDir: {}
