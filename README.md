@@ -13,6 +13,11 @@ Here we define the Grafana Agent chart with its templates and default configurat
 
 **Who can use it?**
 
+## ⚠️  Deprecation notice
+
+grafana-agent has been replaced by [Alloy](https://github.com/giantswarm/alloy-app/).
+grafana-agent is not used anymore, and it is now deprecated.
+
 ## Installing
 
 There are several ways to install this app onto a workload cluster.
